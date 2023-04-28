@@ -4,7 +4,7 @@ const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
   appName: 'ionic.app',
   webDir: 'www',
-  bundledWebRuntime: false
+  bundledWebRuntime: true
 };
 
 export default config;
