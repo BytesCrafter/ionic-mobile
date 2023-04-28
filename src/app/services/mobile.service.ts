@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { Preferences } from '@capacitor/preferences';
+import { Network } from '@capacitor/network';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,15 @@ export class MobileService {
     window.addEventListener('statusTap', function () { // iOS only
       console.log('statusbar tapped');
     });
+
+    Network.addListener('networkStatusChange', status => {
+      console.log('Network status changed', status);
+    });
+  }
+
+  async getNetworkStatus() {
+    const status = await Network.getStatus();
+    return status;
   }
 
   async setPrefs(keyName: any = '', strvar: any = '') {
