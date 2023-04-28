@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { Preferences } from '@capacitor/preferences';
+import { Device } from '@capacitor/device';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,16 @@ export class MobileService {
     window.addEventListener('statusTap', function () { // iOS only
       console.log('statusbar tapped');
     });
+  }
+
+  async getDeviceInfo() {
+    const info = await Device.getInfo();
+    return info;
+  }
+
+  async getBatteryInfo() {
+    const info = await Device.getBatteryInfo();
+    return info;
   }
 
   async setPrefs(keyName: any = '', strvar: any = '') {
