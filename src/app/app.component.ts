@@ -2,6 +2,7 @@ import { Component, EnvironmentInjector, Inject, ViewChild, inject } from '@angu
 import { IonicModule } from '@ionic/angular';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { MobileService } from './services/mobile.service';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent {
 
   constructor(
     private router: Router,
+    private mobileSvc: MobileService,
     @Inject(DOCUMENT) private document: Document,
   ) {
     let onboarded = localStorage.getItem('app-onboarding-completed');
